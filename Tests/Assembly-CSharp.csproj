@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\LoadFromFile.cs" />
     <Compile Include="Assets\Scripts\MainGameMenager.cs" />
     <Compile Include="Assets\Scripts\QuestionsMenager.cs" />
+    <Compile Include="Assets\Scripts\SelectAnswerEvent.cs" />
     <None Include="Assets\Resources\InputData.txt" />
     <Reference Include="UnityEngine">
       <HintPath>D:/Work/UnityHub/2019.4.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

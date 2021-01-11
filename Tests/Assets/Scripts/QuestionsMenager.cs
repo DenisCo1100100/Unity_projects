@@ -1,11 +1,10 @@
 ﻿using System;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class QuestionsMenager
 {
     public string[] QestAndAnswer;
-    private LoadFromFile dataFromFile;
+    public LoadFromFile dataFromFile;
 
     public int CountQuest { get; set; }
     public int CorrectAnswer { get; set; }

@@ -1,51 +1,18 @@
-﻿using System;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class MainGameMenager : MonoBehaviour, IPointerClickHandler
+public class MainGameMenager : MonoBehaviour
 {
-    private QuestionsMenager questionsMenager;
+    public static MainGameMenager GameMenager { get; private set; }
     public Text[] QestAndAnswer;
-    private static int[] randomNumbersArray;
-    private int randomNumber;
-    private int numberSelectButton;
 
-    private void Start()
+    private void Awake()
     {
-        questionsMenager = new QuestionsMenager();
-        questionsMenager.LoadQuest(QestAndAnswer, GenerateRandomNumber());
+        GameMenager = this;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void LoadQuest(QuestionsMenager questions, int questNumber) 
     {
-        GameObject selectButton = eventData.pointerCurrentRaycast.gameObject;
-        numberSelectButton = Convert.ToInt32(selectButton.tag);
-        questionsMenager.LoadQuest(QestAndAnswer, GenerateRandomNumber());
-
-        if(questionsMenager.CheckingAnswer(randomNumber, numberSelectButton))
-        {
-            selectButton.GetComponent<Image>().color = Color.red;
-        }
-        else
-        {
-            selectButton.GetComponent<Image>().color = Color.green;
-        }
-    }
-
-    //TODO: Здесь БАГ
-    private int GenerateRandomNumber()
-    {
-        randomNumbersArray = new int[questionsMenager.CountQuest];
-        randomNumber = UnityEngine.Random.Range(0, questionsMenager.CountQuest);
-
-        while (randomNumbersArray.Contains(randomNumber))
-        {
-            randomNumber = UnityEngine.Random.Range(0, questionsMenager.CountQuest);
-            randomNumbersArray[randomNumbersArray.Length] = randomNumber;
-        }
-
-        return randomNumber;
+        questions.LoadQuest(QestAndAnswer, questNumber);
     }
 }
