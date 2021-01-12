@@ -1,20 +1,17 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class SelectAnswerEvent : MonoBehaviour, IPointerClickHandler
 {
-    private QuestionsMenager questionsMenager;
     private int numberSelectButton;
     private GameObject selectButton;
-    private int _questNumber;
+    private static int _questNumber;
 
     private void Start()
     {
         _questNumber = 0;
-        questionsMenager = new QuestionsMenager();
-        MainGameMenager.GameMenager.LoadQuest(questionsMenager, _questNumber);
+        MainGameMenager.GameMenager.LoadQuest(_questNumber);
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -22,13 +19,21 @@ public class SelectAnswerEvent : MonoBehaviour, IPointerClickHandler
         selectButton = eventData.pointerCurrentRaycast.gameObject;
         numberSelectButton = Convert.ToInt32(selectButton.tag);
 
-        if(questionsMenager.CheckingAnswer(_questNumber, numberSelectButton))
+        if(MainGameMenager.GameMenager.CheckingAnswer(_questNumber, numberSelectButton))
         {
-            gameObject.GetComponent<Image>().color = Color.green;
+            MainGameMenager.GameMenager.StandyMode(true, Color.green, numberSelectButton);
+            _questNumber++;
         }
         else
         {
-            gameObject.GetComponent<Image>().color = Color.red;
+            MainGameMenager.GameMenager.StandyMode(true, Color.red, numberSelectButton);
+            _questNumber++;
         }
+    }
+
+    public void LoadNextQuest()
+    {
+        MainGameMenager.GameMenager.LoadQuest(_questNumber);
+        MainGameMenager.GameMenager.StandyMode(false);
     }
 }
