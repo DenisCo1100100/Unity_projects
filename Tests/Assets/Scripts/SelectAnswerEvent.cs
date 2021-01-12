@@ -6,7 +6,7 @@ public class SelectAnswerEvent : MonoBehaviour, IPointerClickHandler
 {
     private int numberSelectButton;
     private GameObject selectButton;
-    private static int _questNumber;
+    public static int _questNumber;
 
     private void Start()
     {
@@ -22,6 +22,7 @@ public class SelectAnswerEvent : MonoBehaviour, IPointerClickHandler
         if(MainGameMenager.GameMenager.CheckingAnswer(_questNumber, numberSelectButton))
         {
             MainGameMenager.GameMenager.StandyMode(true, Color.green, numberSelectButton);
+            Statistics.Stats.CountCorectAnswer++;
             _questNumber++;
         }
         else
@@ -33,7 +34,15 @@ public class SelectAnswerEvent : MonoBehaviour, IPointerClickHandler
 
     public void LoadNextQuest()
     {
-        MainGameMenager.GameMenager.LoadQuest(_questNumber);
-        MainGameMenager.GameMenager.StandyMode(false);
+        if (_questNumber < MainGameMenager.GameMenager.dataFromFile.CountQuestions)
+        {
+            MainGameMenager.GameMenager.LoadQuest(_questNumber);
+            MainGameMenager.GameMenager.StandyMode(false); 
+        }
+        else
+        {
+            Statistics.Stats.PrintStatistics();
+            UIController.control.isActiveStatistics = true;
+        }
     }
 }
