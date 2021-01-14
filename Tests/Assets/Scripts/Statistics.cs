@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Statistics : MonoBehaviour
@@ -38,15 +36,15 @@ public class Statistics : MonoBehaviour
     {
         if(ColculatePercent() < 30)
         {
-            _comments.text = "GOOD JOB!\nYour knowledge at the JUNIOR developer level";
+            _comments.text = "NOT BAD!!!";
         }
         else if(ColculatePercent() > 30 && ColculatePercent() < 70)
         {
-            _comments.text = "GOOD JOB!\nYour knowledge at the MIDLE developer level";
+            _comments.text = "GOOD JOB!!!";
         }
         else
         {
-            _comments.text = "GOOD JOB!\nYour knowledge at the SENIOR developer level";
+            _comments.text = "GREAT JOB!!!";
         }
     }
 

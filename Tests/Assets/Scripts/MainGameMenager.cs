@@ -4,12 +4,14 @@ using UnityEngine.UI;
 
 public class MainGameMenager : MonoBehaviour
 {
-    public static MainGameMenager GameMenager { get; private set; }
-    public int CountQuest { get; set; }
-    public int CorrectAnswer { get; set; }
+    #region Inspector
     public Text[] QuestAndAnswer;
-    public string[,] dataQestAndAnswer;
     public GameObject[] Buttons;
+    #endregion
+
+    public static MainGameMenager GameMenager { get; private set; }
+    public int CorrectAnswer { get; set; }
+    public string[,] dataQestAndAnswer;
     public LoadFromFile dataFromFile;
 
     private void Awake()
@@ -17,14 +19,13 @@ public class MainGameMenager : MonoBehaviour
         GameMenager = this;
 
         dataFromFile = new LoadFromFile();
-        dataQestAndAnswer = dataFromFile.QuestionsArray;
-
-        CountQuest = 5;
     }
 
     public void LoadQuest(int questNumber)
     {
-        for (int i = 0; i < CountQuest; i++)
+        dataQestAndAnswer = dataFromFile.QuestionsArray;
+
+        for (int i = 0; i < 5; i++)
         {
             QuestAndAnswer[i].text = dataQestAndAnswer[questNumber, i];
         }
@@ -66,6 +67,7 @@ public class MainGameMenager : MonoBehaviour
 
         Buttons[numberSelectButton - 1].GetComponent<Image>().color = colorSelectButton;
         Buttons[numberSelectButton - 1].GetComponent<Button>().interactable = true;
+        Buttons[CorrectAnswer - 1].GetComponent<Image>().color = Color.green;
     }
 
     public void StandyMode(bool isActive)

@@ -42,7 +42,7 @@ public class SelectAnswerEvent : MonoBehaviour, IPointerClickHandler
         else
         {
             Statistics.Stats.PrintStatistics();
-            UIController.control.isActiveStatistics = true;
+            UIController.control.IsActiveStatistics = true;
         }
     }
 }

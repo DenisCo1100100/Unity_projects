@@ -1,0 +1,11 @@
+You can easily find GameObjects in code by using…;Layers;Tags;Components;Integers;2
+You can search the hierarchy for objects that contain specific component types by using a prefix of...;C;T;W;D;2
+Static variables are always...;Shared across all instances of a class;Public;Reset on every new frame;The same;4
+The main color for a material is defined by the...;Normal Channel;Detail Channel;Albedo Channel;Specular Channel;3
+By default, when you run a Unity game, you will first see...;The First Scene;A Happy Face;A Splash Screen;The Resolution Config Dialog;1
+Which method would you use to programmatically access a GameObject with a unique name?;GameObject.Find();GameObject.FindWithTag();GameObject.FindObjectsWithTag();gameObject;1
+If a GameObject has a Rigidbody component, it can...;be affected by physics;can collide with other objects;not be moved;not be rotated;1
+Physic Materials can be added to...;Mesh Renderer Components;Rigidbody Components;Collider Components;GameObjects;3
+A Physic Material with a bounciness value of 0 would cause;a little bouncing;no bouncing;lots of bouncing;objects to slide on it;2
+Which of the following are always true?;Colliders can be combined;Colliders are the same shape as the GameObject their attached to;Colliders are the same size as the GameObject their attached to;Colliders make it so that GameObjects bump into each other;1
+10
